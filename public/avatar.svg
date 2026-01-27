@@ -1,0 +1,83 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B"/>
+      <stop offset="100%" style="stop-color:#0F172A"/>
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22C55E"/>
+      <stop offset="100%" style="stop-color:#16A34A"/>
+    </linearGradient>
+    <linearGradient id="skinGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5D0C5"/>
+      <stop offset="100%" style="stop-color:#E8B4A8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer ring -->
+  <circle cx="100" cy="100" r="98" stroke="url(#accentGradient)" stroke-width="2" fill="none" opacity="0.5"/>
+
+  <!-- Background -->
+  <circle cx="100" cy="100" r="95" fill="url(#bgGradient)"/>
+
+  <!-- Code brackets decoration - left -->
+  <text x="25" y="105" font-family="monospace" font-size="40" fill="#22C55E" opacity="0.3">&lt;</text>
+
+  <!-- Code brackets decoration - right -->
+  <text x="160" y="105" font-family="monospace" font-size="40" fill="#22C55E" opacity="0.3">/&gt;</text>
+
+  <!-- Body/Shirt -->
+  <path d="M60 160 Q60 130 100 130 Q140 130 140 160 L140 200 L60 200 Z" fill="#334155"/>
+
+  <!-- Shirt collar detail -->
+  <path d="M85 130 L100 145 L115 130" stroke="#22C55E" stroke-width="2" fill="none"/>
+
+  <!-- Neck -->
+  <rect x="90" y="115" width="20" height="20" fill="url(#skinGradient)" rx="2"/>
+
+  <!-- Face -->
+  <ellipse cx="100" cy="85" rx="35" ry="40" fill="url(#skinGradient)"/>
+
+  <!-- Hair -->
+  <path d="M65 75 Q65 45 100 45 Q135 45 135 75 L135 60 Q135 35 100 35 Q65 35 65 60 Z" fill="#1E293B"/>
+
+  <!-- Hair side left -->
+  <path d="M65 60 Q60 70 65 85" stroke="#1E293B" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+  <!-- Hair side right -->
+  <path d="M135 60 Q140 70 135 85" stroke="#1E293B" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+  <!-- Eyebrows -->
+  <path d="M80 72 Q85 70 92 72" stroke="#1E293B" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <path d="M108 72 Q115 70 120 72" stroke="#1E293B" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+  <!-- Eyes -->
+  <ellipse cx="86" cy="82" rx="6" ry="5" fill="#1E293B"/>
+  <ellipse cx="114" cy="82" rx="6" ry="5" fill="#1E293B"/>
+
+  <!-- Eye shine -->
+  <circle cx="88" cy="80" r="2" fill="white"/>
+  <circle cx="116" cy="80" r="2" fill="white"/>
+
+  <!-- Nose -->
+  <path d="M100 85 L100 95 Q100 98 97 98" stroke="#D4A89C" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+  <!-- Smile -->
+  <path d="M88 105 Q100 115 112 105" stroke="#1E293B" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+  <!-- Glasses frames -->
+  <rect x="73" y="75" rx="4" ry="4" width="22" height="16" stroke="#94A3B8" stroke-width="2" fill="none"/>
+  <rect x="105" y="75" rx="4" ry="4" width="22" height="16" stroke="#94A3B8" stroke-width="2" fill="none"/>
+
+  <!-- Glasses bridge -->
+  <path d="M95 83 L105 83" stroke="#94A3B8" stroke-width="2"/>
+
+  <!-- Glasses arms -->
+  <path d="M73 80 L65 78" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M127 80 L135 78" stroke="#94A3B8" stroke-width="2"/>
+
+  <!-- Terminal icon on shirt -->
+  <rect x="90" y="155" width="20" height="14" rx="2" fill="#22C55E" opacity="0.8"/>
+  <text x="93" y="165" font-family="monospace" font-size="8" fill="#0F172A">&gt;_</text>
+</svg>
