@@ -12,13 +12,14 @@ const techStack = [
   "Node.js",
   "TypeScript",
   "PostgreSQL",
+  "MySQL",
   "IA",
 ];
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:contato@gabrielmendes.dev", label: "Email" },
+  { icon: Github, href: "https://github.com/GMendes18", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/gabriel-mendes18", label: "LinkedIn" },
+  { icon: Mail, href: "mailto:gabri.mevial@gmail.com", label: "Email" },
 ];
 
 export default function Hero() {
@@ -43,13 +44,13 @@ export default function Hero() {
         >
           {/* Avatar */}
           <motion.div variants={scaleIn} className="relative">
-            <div className="relative w-48 h-48 lg:w-64 lg:h-64">
+            <div className="relative w-48 h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden border-4 border-accent/20">
               <Image
-                src="/avatar.svg"
+                src="/profile.jpg"
                 alt="Gabriel Mendes - Desenvolvedor Full-Stack"
                 fill
                 priority
-                className="object-contain"
+                className="object-cover"
               />
             </div>
             {/* Online indicator */}
@@ -149,23 +150,23 @@ export default function Hero() {
             </motion.div>
           </div>
         </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 0.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <a
-            href="#sobre"
-            className="flex flex-col items-center gap-2 text-text-muted hover:text-accent transition-colors cursor-pointer"
-          >
-            <span className="text-sm">Scroll</span>
-            <ArrowDown size={20} className="animate-bounce" />
-          </a>
-        </motion.div>
       </div>
+
+      {/* Scroll indicator - fora do container principal */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5, duration: 0.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+      >
+        <a
+          href="#sobre"
+          className="flex flex-col items-center gap-2 text-text-muted hover:text-accent transition-colors cursor-pointer"
+        >
+          <span className="text-sm">Scroll</span>
+          <ArrowDown size={20} className="animate-bounce" />
+        </a>
+      </motion.div>
     </section>
   );
 }

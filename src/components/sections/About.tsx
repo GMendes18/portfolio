@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Code2, Zap, Cpu, Rocket } from "lucide-react";
 import GlassCard from "@/components/ui/GlassCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { staggerContainer, staggerItem } from "@/lib/animations";
+import { motion } from "framer-motion";
+import { Code2, Cpu, Rocket, Zap } from "lucide-react";
 
 const stats = [
   { value: "2+", label: "Anos de experiência", icon: Code2 },
@@ -63,7 +63,7 @@ export default function About() {
                 criando aplicações web modernas e escaláveis.
               </p>
               <p className="text-text-secondary text-lg leading-relaxed mb-6">
-                Meu diferencial? Domino ferramentas de{" "}
+                Domino ferramentas de{" "}
                 <span className="text-accent font-medium">
                   Inteligência Artificial
                 </span>{" "}
@@ -75,8 +75,8 @@ export default function About() {
                 <span className="text-text-primary font-medium">
                   React, Next.js, Node.js, TypeScript
                 </span>{" "}
-                e PostgreSQL. Também desenvolvo automações e integrações com
-                APIs de IA como Claude e GPT.
+                PostgreSQL, entre outros. Também desenvolvo automações e
+                integrações com APIs de IA como Claude e Gemini.
               </p>
             </GlassCard>
 

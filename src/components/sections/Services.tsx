@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Globe, LayoutDashboard, Bot, Rocket } from "lucide-react";
+import { Globe, LayoutDashboard, Bot, Rocket, Wrench, Bug } from "lucide-react";
 import GlassCard from "@/components/ui/GlassCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { staggerContainer, staggerItem } from "@/lib/animations";
@@ -13,7 +13,6 @@ const services = [
     description:
       "Sites modernos, responsivos e otimizados para SEO. Landing pages que convertem, sites institucionais e e-commerce.",
     features: ["Landing Pages", "Sites Institucionais", "E-commerce", "SEO"],
-    price: "A partir de R$500",
   },
   {
     icon: LayoutDashboard,
@@ -21,7 +20,6 @@ const services = [
     description:
       "Dashboards completos, sistemas de gestão e aplicações web complexas com foco em UX e performance.",
     features: ["Dashboards", "Sistemas de Gestão", "Portais", "APIs"],
-    price: "A partir de R$2.000",
   },
   {
     icon: Bot,
@@ -29,7 +27,6 @@ const services = [
     description:
       "Chatbots inteligentes, automações de processos e integrações com APIs de IA como Claude e GPT.",
     features: ["Chatbots", "Integrações IA", "Automações", "APIs"],
-    price: "A partir de R$800",
   },
   {
     icon: Rocket,
@@ -37,7 +34,20 @@ const services = [
     description:
       "Transformo sua ideia em produto funcional rapidamente. Foco em validação rápida com custo otimizado.",
     features: ["Prototipagem", "Validação", "Deploy Rápido", "Iteração"],
-    price: "A partir de R$1.500",
+  },
+  {
+    icon: Wrench,
+    title: "Manutenção de Sites",
+    description:
+      "Atualizações, melhorias de performance, correções e suporte contínuo para manter seu site sempre funcionando.",
+    features: ["Atualizações", "Performance", "Segurança", "Suporte"],
+  },
+  {
+    icon: Bug,
+    title: "Resolução de Bugs",
+    description:
+      "Identifico e corrijo problemas em projetos existentes. Trabalho com diversas linguagens e frameworks.",
+    features: ["Debug", "Refatoração", "Múltiplas Linguagens", "Code Review"],
   },
 ];
 
@@ -59,7 +69,7 @@ export default function Services() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid md:grid-cols-2 gap-6"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {services.map((service) => (
             <motion.div key={service.title} variants={staggerItem}>
@@ -78,9 +88,6 @@ export default function Services() {
                     >
                       {service.title}
                     </h3>
-                    <p className="text-accent text-sm font-medium">
-                      {service.price}
-                    </p>
                   </div>
                 </div>
 
@@ -100,6 +107,15 @@ export default function Services() {
             </motion.div>
           ))}
         </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center text-text-muted mt-8"
+        >
+          Valores combinados de acordo com a complexidade do projeto
+        </motion.p>
       </div>
     </section>
   );
