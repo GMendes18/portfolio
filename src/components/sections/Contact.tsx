@@ -1,12 +1,20 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Send, Mail, MessageSquare, Linkedin, Github, Check, AlertCircle } from "lucide-react";
+import Button from "@/components/ui/Button";
 import GlassCard from "@/components/ui/GlassCard";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Button from "@/components/ui/Button";
 import { staggerContainer, staggerItem } from "@/lib/animations";
+import { motion } from "framer-motion";
+import {
+  AlertCircle,
+  Check,
+  Github,
+  Linkedin,
+  Mail,
+  MessageSquare,
+  Send,
+} from "lucide-react";
+import { useState } from "react";
 
 interface FormData {
   name: string;
@@ -23,22 +31,27 @@ const contactLinks = [
   {
     icon: Mail,
     label: "Email",
-    value: "contato@gabrielmendes.dev",
-    href: "mailto:contato@gabrielmendes.dev",
+    value: "gabri.mevial@gmail.com",
+    href: "mailto:gabri.mevial@gmail.com",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
-    value: "/in/gabrielmendes",
-    href: "https://linkedin.com/in/gabrielmendes",
+    value: "/in/gabriel-mendes18",
+    href: "https://www.linkedin.com/in/gabriel-mendes18",
   },
   {
     icon: Github,
     label: "GitHub",
-    value: "@gabrielmendes",
-    href: "https://github.com/gabrielmendes",
+    value: "@GMendes18",
+    href: "https://github.com/GMendes18",
   },
 ];
+
+// WhatsApp - substitua SEUNUMERO pelo seu número com DDD (ex: 5511999999999)
+const WHATSAPP_NUMBER = "5531999779157"; // Deixe vazio ou preencha: "5511999999999"
+const WHATSAPP_MESSAGE =
+  "Olá Gabriel! Vi seu portfólio e gostaria de conversar sobre um projeto.";
 
 export default function Contact() {
   const [formData, setFormData] = useState<FormData>({
@@ -73,7 +86,8 @@ export default function Contact() {
       if (response.ok) {
         setStatus({
           type: "success",
-          message: "Mensagem enviada com sucesso! Entrarei em contato em breve.",
+          message:
+            "Mensagem enviada com sucesso! Entrarei em contato em breve.",
         });
         setFormData({ name: "", email: "", message: "" });
       } else {
@@ -89,6 +103,12 @@ export default function Contact() {
       });
     }
   };
+
+  const whatsappUrl = WHATSAPP_NUMBER
+    ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+        WHATSAPP_MESSAGE
+      )}`
+    : null;
 
   return (
     <section id="contato" className="py-24 bg-bg-secondary relative">
@@ -247,14 +267,29 @@ export default function Contact() {
               </div>
             </GlassCard>
 
-            {/* WhatsApp CTA - Placeholder */}
+            {/* WhatsApp CTA */}
             <GlassCard hover={false} padding="lg" className="text-center">
-              <p className="text-text-muted mb-4">
-                Link do WhatsApp será adicionado em breve
-              </p>
-              <Button variant="outline" size="md" disabled>
-                WhatsApp (Em breve)
-              </Button>
+              {whatsappUrl ? (
+                <>
+                  <p className="text-text-muted mb-4">
+                    Resposta mais rápida pelo WhatsApp
+                  </p>
+                  <Button
+                    variant="outline"
+                    size="md"
+                    onClick={() => window.open(whatsappUrl, "_blank")}
+                  >
+                    Chamar no WhatsApp
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <p className="text-text-muted mb-4">WhatsApp em breve</p>
+                  <Button variant="outline" size="md" disabled>
+                    WhatsApp (Em breve)
+                  </Button>
+                </>
+              )}
             </GlassCard>
           </motion.div>
         </motion.div>
