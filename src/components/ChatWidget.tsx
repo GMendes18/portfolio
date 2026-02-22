@@ -11,6 +11,7 @@ interface Message {
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showBubble, setShowBubble] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
@@ -21,6 +22,24 @@ export default function ChatWidget() {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const already = sessionStorage.getItem("chat-bubble-shown");
+    if (already) return;
+
+    const show = setTimeout(() => {
+      setShowBubble(true);
+      sessionStorage.setItem("chat-bubble-shown", "1");
+    }, 3000);
+
+    return () => clearTimeout(show);
+  }, []);
+
+  useEffect(() => {
+    if (!showBubble) return;
+    const hide = setTimeout(() => setShowBubble(false), 8000);
+    return () => clearTimeout(hide);
+  }, [showBubble]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -97,7 +116,7 @@ export default function ChatWidget() {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ delay: 1, type: "spring", stiffness: 200 }}
-        onClick={() => setIsOpen(true)}
+        onClick={() => { setIsOpen(true); setShowBubble(false); }}
         className={`fixed bottom-6 right-6 z-50 p-4 rounded-full bg-accent text-bg-primary shadow-lg shadow-accent/25 hover:bg-accent-hover transition-colors cursor-pointer ${
           isOpen ? "hidden" : ""
         }`}
@@ -105,6 +124,34 @@ export default function ChatWidget() {
       >
         <MessageCircle size={24} />
       </motion.button>
+
+      {/* Notification Bubble */}
+      <AnimatePresence>
+        {showBubble && !isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 8 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 8 }}
+            transition={{ type: "spring", stiffness: 300, damping: 24 }}
+            className="fixed bottom-24 right-6 z-50 max-w-[220px]"
+          >
+            <div className="relative bg-bg-primary border border-border-glass rounded-2xl rounded-br-sm px-4 py-3 shadow-xl shadow-black/30 backdrop-blur-xl">
+              <button
+                onClick={() => setShowBubble(false)}
+                className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-bg-tertiary border border-border-glass flex items-center justify-center text-text-muted hover:text-text-primary transition-colors cursor-pointer"
+                aria-label="Fechar notificação"
+              >
+                <X size={10} />
+              </button>
+              <p className="text-sm text-text-primary leading-snug">
+                Tem alguma dúvida sobre o Gabriel? Me pergunte! 👋
+              </p>
+              {/* Tail */}
+              <div className="absolute -bottom-[7px] right-4 w-3 h-3 bg-bg-primary border-r border-b border-border-glass rotate-45" />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Chat Window */}
       <AnimatePresence>
